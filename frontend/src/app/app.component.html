@@ -1,0 +1,20 @@
+<main class="container">
+
+   <section class="card" *ngIf="team$ | async as team; else loading">
+        <h2>{{ team.teamName }}</h2>
+        <p><strong>Criteria:</strong> {{ team.criteria }}</p>
+      </section>
+      <button (click)="vote()" [disabled]="posting()">
+        {{ posting() ? 'Sending…' : 'Send empty POST' }}
+      </button>
+
+      <section class="status" *ngIf="postMessage() as m">
+        {{ m }}
+      </section>
+   
+
+      <ng-template #loading>
+        <p>Loading..</p>
+      </ng-template>
+
+    </main>
